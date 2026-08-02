@@ -1,0 +1,1 @@
+cargo:rustc-env=MIME_TYPES_GENERATED_PATH=C:\Users\urjit upadhyay\Dropbox (Old)\PC\Desktop\post mortem\textdistance-rs\target\release\build\mime_guess-02f3f8108eed1bfd\out\mime_types_generated.rs

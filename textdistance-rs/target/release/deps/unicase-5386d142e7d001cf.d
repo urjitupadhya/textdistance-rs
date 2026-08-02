@@ -1,0 +1,10 @@
+C:\Users\urjit upadhyay\Dropbox (Old)\PC\Desktop\post mortem\textdistance-rs\target\release\deps\unicase-5386d142e7d001cf.d: C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs
+
+C:\Users\urjit upadhyay\Dropbox (Old)\PC\Desktop\post mortem\textdistance-rs\target\release\deps\libunicase-5386d142e7d001cf.rlib: C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs
+
+C:\Users\urjit upadhyay\Dropbox (Old)\PC\Desktop\post mortem\textdistance-rs\target\release\deps\libunicase-5386d142e7d001cf.rmeta: C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs
+
+C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\lib.rs:
+C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\ascii.rs:
+C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\mod.rs:
+C:\Users\urjit\ upadhyay\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\unicase-2.9.0\src\unicode\map.rs:
