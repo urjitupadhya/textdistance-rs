@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { compare_all_wasm } from 'textdistance-rs';
 
 interface CompareResult {
   category: string;
@@ -10,34 +9,53 @@ interface CompareResult {
   normalized_similarity: number;
 }
 
+interface CompareAllResponse {
+  results: CompareResult[];
+}
+
 function App() {
   const [s1, setS1] = useState('kitten');
   const [s2, setS2] = useState('sitting');
   const [results, setResults] = useState<CompareResult[]>([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchResults = () => {
+    const fetchResults = async () => {
       if (!s1 || !s2) {
         setResults([]);
         return;
       }
       
+      setLoading(true);
       setError('');
       
       try {
-        const raw_results = compare_all_wasm(s1, s2);
-        // The wasm function returns an object { results: [...] }
-        setResults(raw_results.results);
+        const response = await fetch('/api/compare_all', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ s1, s2 }),
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch results');
+        }
+        
+        const data: CompareAllResponse = await response.json();
+        setResults(data.results);
       } catch (err) {
         console.error(err);
-        setError('Failed to execute WASM module.');
+        setError('Failed to connect to API. Is the server running?');
+      } finally {
+        setLoading(false);
       }
     };
 
     const timer = setTimeout(() => {
       fetchResults();
-    }, 100); // reduced debounce since WASM is instant
+    }, 300);
 
     return () => clearTimeout(timer);
   }, [s1, s2]);

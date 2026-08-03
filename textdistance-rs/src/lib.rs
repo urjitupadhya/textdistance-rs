@@ -1,8 +1,4 @@
-/// textdistance — 30+ string distance/similarity algorithms in Rust.
-///
-/// A port of the Python `textdistance` library by life4.
-/// Every algorithm implements the `TextDistance` trait providing
-/// `distance`, `similarity`, `normalized_distance`, and `normalized_similarity`.
+#![warn(missing_docs)]
 
 //! # TextDistance
 //! 
@@ -23,8 +19,6 @@
 //! assert_eq!(lev.distance("kitten", "sitting"), 3.0);
 //! assert_eq!(lev.normalized_similarity("kitten", "sitting"), 0.5714285714285714);
 //! ```
-
-#![warn(missing_docs)]
 
 pub mod algorithms;
 pub mod server;

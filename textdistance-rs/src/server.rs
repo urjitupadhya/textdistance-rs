@@ -33,15 +33,23 @@ pub struct CompareAllResponse {
     results: Vec<CompareResult>,
 }
 
+fn sanitize(v: f64) -> f64 {
+    if v.is_nan() || v.is_infinite() {
+        0.0
+    } else {
+        v
+    }
+}
+
 macro_rules! run_distance {
     ($cat:expr, $alg_name:expr, $alg:expr, $s1:expr, $s2:expr) => {
         CompareResult {
             category: $cat,
             algorithm: $alg_name,
-            distance: $alg.distance($s1, $s2),
-            similarity: $alg.similarity($s1, $s2),
-            normalized_distance: $alg.normalized_distance($s1, $s2),
-            normalized_similarity: $alg.normalized_similarity($s1, $s2),
+            distance: sanitize($alg.distance($s1, $s2)),
+            similarity: sanitize($alg.similarity($s1, $s2)),
+            normalized_distance: sanitize($alg.normalized_distance($s1, $s2)),
+            normalized_similarity: sanitize($alg.normalized_similarity($s1, $s2)),
         }
     };
 }
@@ -51,15 +59,15 @@ macro_rules! run_similarity {
         CompareResult {
             category: $cat,
             algorithm: $alg_name,
-            distance: $alg.distance($s1, $s2),
-            similarity: $alg.similarity($s1, $s2),
-            normalized_distance: $alg.normalized_distance($s1, $s2),
-            normalized_similarity: $alg.normalized_similarity($s1, $s2),
+            distance: sanitize($alg.distance($s1, $s2)),
+            similarity: sanitize($alg.similarity($s1, $s2)),
+            normalized_distance: sanitize($alg.normalized_distance($s1, $s2)),
+            normalized_similarity: sanitize($alg.normalized_similarity($s1, $s2)),
         }
     };
 }
 
-use rayon::prelude::*;
+// removed rayon
 
 async fn compare_all(Json(payload): Json<CompareRequest>) -> impl IntoResponse {
     let s1 = payload.s1.clone();
@@ -113,10 +121,8 @@ async fn compare_all(Json(payload): Json<CompareRequest>) -> impl IntoResponse {
         Box::new(|a, b| run_similarity!("Simple", "Matrix", Matrix::new(), a, b)),
     ];
 
-    // Compute all 36 algorithms in parallel using a threadpool
-    let results: Vec<CompareResult> = tokio::task::spawn_blocking(move || {
-        tasks.into_par_iter().map(|f| f(&s1, &s2)).collect()
-    }).await.unwrap();
+    // Compute all 36 algorithms sequentially (these take < 1ms total)
+    let results: Vec<CompareResult> = tasks.iter().map(|f| f(&s1, &s2)).collect();
 
     Json(CompareAllResponse { results })
 }
