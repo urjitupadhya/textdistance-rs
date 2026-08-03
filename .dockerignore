@@ -1,0 +1,6 @@
+textdistance-rs/frontend/node_modules
+textdistance-rs/target
+textdistance-rs/frontend/dist
+.env
+.DS_Store
+*.pdb
