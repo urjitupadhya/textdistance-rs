@@ -77,9 +77,9 @@ function App() {
   };
 
   const getScoreColorHex = (score: number) => {
-    if (score >= 0.8) return '#10b981'; // success
-    if (score >= 0.5) return '#f59e0b'; // warning
-    return '#ef4444'; // danger
+    if (score >= 0.8) return '#10b981';
+    if (score >= 0.5) return '#f59e0b';
+    return '#ef4444';
   };
 
   return (
@@ -129,12 +129,12 @@ function App() {
         </div>
       ) : (
         <div className="results-container">
+          {loading && <div className="glass-panel" style={{textAlign:'center',color:'var(--text-muted)'}}>Computing...</div>}
           {Object.entries(groupedResults).map(([category, items]) => (
             <div key={category} className="category-section">
               <h2 className="category-title">{category} Algorithms</h2>
               <div className="results-grid">
                 {items.map((item) => {
-                  // Some distances (like Tanimoto) can be -Infinity. Handle gracefully.
                   const displayScore = Number.isFinite(item.normalized_similarity) ? item.normalized_similarity : 0;
                   const percent = Math.max(0, Math.min(100, displayScore * 100));
                   
