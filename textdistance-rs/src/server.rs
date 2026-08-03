@@ -128,6 +128,11 @@ async fn compare_all(Json(payload): Json<CompareRequest>) -> impl IntoResponse {
 }
 
 pub async fn start_server(port: u16) {
+    // Allow PORT env var override (used by Render, Railway, etc.)
+    let port = std::env::var("PORT")
+        .ok()
+        .and_then(|p| p.parse::<u16>().ok())
+        .unwrap_or(port);
     let api_routes = Router::new()
         .route("/compare_all", post(compare_all));
 
