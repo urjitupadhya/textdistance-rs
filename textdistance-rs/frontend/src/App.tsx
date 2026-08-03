@@ -31,7 +31,8 @@ function App() {
       setError('');
       
       try {
-        const response = await fetch('/api/compare_all', {
+        const apiBase = import.meta.env.VITE_API_URL ?? '';
+        const response = await fetch(`${apiBase}/api/compare_all`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
